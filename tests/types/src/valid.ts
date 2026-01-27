@@ -1,4 +1,4 @@
-import {assert, Has} from 'conditional-type-checks';
+import { assert, Has } from 'conditional-type-checks';
 
 /*
  * This code will not run, but will be typechecked as a test.
@@ -57,7 +57,7 @@ import {
 } from '../../../types';
 
 const stripePromise: Promise<Stripe | null> = loadStripe('');
-const stripeConnectPromise = loadStripe('', {stripeAccount: '', locale: 'en'});
+const stripeConnectPromise = loadStripe('', { stripeAccount: '', locale: 'en' });
 
 const stripe: Stripe = window.Stripe!('pk_123');
 
@@ -115,8 +115,8 @@ const options: StripeElementsOptions = {
   paymentMethodTypes: ['card'],
   paymentMethodCreation: 'manual',
   paymentMethodOptions: {
-    card: {require_cvc_recollection: true, setup_future_usage: 'none'},
-    amazon_pay: {setup_future_usage: 'none'},
+    card: { require_cvc_recollection: true, setup_future_usage: 'none' },
+    amazon_pay: { setup_future_usage: 'none' },
   },
   appearance: {
     disableAnimations: false,
@@ -156,7 +156,7 @@ stripe.elements({
   capture_method: 'automatic',
   payment_method_types: ['card'],
   payment_method_options: {
-    us_bank_account: {financial_connections: {permissions: ['payment_method']}},
+    us_bank_account: { financial_connections: { permissions: ['payment_method'] } },
   },
   on_behalf_of: 'acct_id',
 });
@@ -167,7 +167,7 @@ stripe.elements({
   capture_method: 'automatic',
   payment_method_types: ['card'],
   payment_method_options: {
-    us_bank_account: {financial_connections: {permissions: ['payment_method']}},
+    us_bank_account: { financial_connections: { permissions: ['payment_method'] } },
   },
   on_behalf_of: 'acct_id',
 });
@@ -249,7 +249,7 @@ const MY_STYLE: StripeElementStyle = {
 };
 
 elements.update({
-  fonts: [{cssSrc: 'https://example.com/haha.css'}],
+  fonts: [{ cssSrc: 'https://example.com/haha.css' }],
 });
 
 elements.update({});
@@ -294,14 +294,14 @@ elements.update({
   ],
 });
 
-elements.on('update-end', () => {});
+elements.on('update-end', () => { });
 
 const fetchUpdates = async () => {
-  const {error} = await elements.fetchUpdates();
+  const { error } = await elements.fetchUpdates();
 };
 
 const handleSubmit = async () => {
-  const {error, selectedPaymentMethod} = await elements.submit();
+  const { error, selectedPaymentMethod } = await elements.submit();
 };
 
 const auBankAccountElement = elements.create('auBankAccount', {});
@@ -311,20 +311,20 @@ const retrievedAuBankAccountElement: StripeAuBankAccountElement | null = element
 );
 
 const cardElement: StripeCardElement = elements.create('card', {
-  classes: {base: '', focus: ''},
+  classes: { base: '', focus: '' },
   style: MY_STYLE,
-  value: {postalCode: ''},
+  value: { postalCode: '' },
   hidePostalCode: true,
   iconStyle: 'solid',
   disabled: false,
   disableLink: false,
 });
 
-elements.create('card', {preferredNetwork: undefined});
+elements.create('card', { preferredNetwork: undefined });
 
-elements.create('card', {preferredNetwork: ['cartes_bancaires', 'accel']});
+elements.create('card', { preferredNetwork: ['cartes_bancaires', 'accel'] });
 
-elements.create('card', {style: {base: {fontWeight: 500}}});
+elements.create('card', { style: { base: { fontWeight: 500 } } });
 
 const cardElementDefaults: StripeCardElement = elements.create('card');
 
@@ -342,15 +342,15 @@ const cardNumberElement: StripeCardNumberElement = elements.create(
   }
 );
 
-elements.create('cardNumber', {preferredNetwork: undefined});
+elements.create('cardNumber', { preferredNetwork: undefined });
 
 elements.create('cardNumber', {
   preferredNetwork: ['cartes_bancaires', 'accel'],
 });
 
-elements.create('cardNumber', {style: {base: {fontWeight: 500}}});
-elements.create('cardCvc', {style: {base: {fontWeight: 500}}});
-elements.create('cardExpiry', {style: {base: {fontWeight: 500}}});
+elements.create('cardNumber', { style: { base: { fontWeight: 500 } } });
+elements.create('cardCvc', { style: { base: { fontWeight: 500 } } });
+elements.create('cardExpiry', { style: { base: { fontWeight: 500 } } });
 
 const retrievedCardNumberElement: StripeCardNumberElement | null = elements.getElement(
   'cardNumber'
@@ -358,7 +358,7 @@ const retrievedCardNumberElement: StripeCardNumberElement | null = elements.getE
 
 const cardExpiryElement: StripeCardExpiryElement = elements.create(
   'cardExpiry',
-  {style: MY_STYLE}
+  { style: MY_STYLE }
 );
 
 const retrievedCardExpiryElement: StripeCardExpiryElement | null = elements.getElement(
@@ -371,7 +371,7 @@ const retrievedCardCvcElement: StripeCardCvcElement | null = elements.getElement
   'cardCvc'
 );
 
-const ibanElement = elements.create('iban', {supportedCountries: ['']});
+const ibanElement = elements.create('iban', { supportedCountries: [''] });
 
 const retrievedIbanElement: StripeIbanElement | null = elements.getElement(
   'iban'
@@ -389,7 +389,7 @@ const paymentRequestButtonElement = elements.create('paymentRequestButton', {
   paymentRequest: stripe.paymentRequest({
     country: 'US',
     currency: 'usd',
-    total: {label: 'Demo total', amount: 1000},
+    total: { label: 'Demo total', amount: 1000 },
     requestPayerName: true,
     requestPayerEmail: true,
     disableWallets: ['googlePay', 'link'],
@@ -516,10 +516,10 @@ const retrievedPaymentElement: StripePaymentElement | null = elements.getElement
 );
 
 paymentElement
-  .on('ready', (e: {elementType: 'payment'}) => {})
-  .on('focus', (e: {elementType: 'payment'}) => {})
-  .on('blur', (e: {elementType: 'payment'}) => {})
-  .on('loaderstart', (e: {elementType: 'payment'}) => {})
+  .on('ready', (e: { elementType: 'payment' }) => { })
+  .on('focus', (e: { elementType: 'payment' }) => { })
+  .on('blur', (e: { elementType: 'payment' }) => { })
+  .on('loaderstart', (e: { elementType: 'payment' }) => { })
   .on(
     'change',
     (e: {
@@ -553,7 +553,7 @@ paymentElement
       collapsed: boolean;
       complete: boolean;
       empty: boolean;
-    }) => {}
+    }) => { }
   )
   .on(
     'loaderror',
@@ -562,7 +562,7 @@ paymentElement
       error: {
         type: string;
       };
-    }) => {}
+    }) => { }
   )
   .on(
     'carddetailschange',
@@ -573,7 +573,7 @@ paymentElement
         brands: CardBrand[] | null;
         funding: CardFunding | null;
       };
-    }) => {}
+    }) => { }
   )
   .on(
     'savedpaymentmethodupdate',
@@ -598,7 +598,7 @@ paymentElement
           phone: null | string;
         };
       };
-    }) => {}
+    }) => { }
   )
   .on(
     'savedpaymentmethodremove',
@@ -623,7 +623,7 @@ paymentElement
           phone: null | string;
         };
       };
-    }) => {}
+    }) => { }
   );
 
 paymentElement.collapse();
@@ -631,14 +631,14 @@ paymentElement.collapse();
 // Test Payment Method Messaging Element
 paymentMethodMessagingElement.on(
   'ready',
-  (e: {elementType: 'paymentMethodMessaging'}) => {}
+  (e: { elementType: 'paymentMethodMessaging' }) => { }
 );
 
 const retrievedPaymentMethodMessagingElement: StripePaymentMethodMessagingElement | null = elements.getElement(
   'paymentMethodMessaging'
 );
 
-retrievedPaymentMethodMessagingElement!.update({amount: 10000});
+retrievedPaymentMethodMessagingElement!.update({ amount: 10000 });
 
 type StripePaymentRequestButtonElementUpdateOptions = Parameters<
   StripePaymentRequestButtonElement['update']
@@ -648,7 +648,7 @@ type StripePaymentRequestButtonElementUpdateOptions = Parameters<
 assert<
   Has<
     Required<StripePaymentRequestButtonElementUpdateOptions>,
-    {paymentRequest: PaymentRequest}
+    { paymentRequest: PaymentRequest }
   >
 >(false);
 
@@ -660,15 +660,15 @@ cardElement.mount('#bogus-container');
 ibanElement.mount('#bogus-container');
 
 cardElement
-  .on('ready', (e: {elementType: 'card'}) => {})
-  .on('focus', (e: {elementType: 'card'}) => {})
-  .on('blur', (e: {elementType: 'card'}) => {})
+  .on('ready', (e: { elementType: 'card' }) => { })
+  .on('focus', (e: { elementType: 'card' }) => { })
+  .on('blur', (e: { elementType: 'card' }) => { })
   .on('change', (e: StripeCardElementChangeEvent) => {
     if (e.error) {
       console.error(e.error.message);
     }
   })
-  .on('networkschange', (e: {elementType: 'card'}) => {})
+  .on('networkschange', (e: { elementType: 'card' }) => { })
   .on(
     'loaderror',
     (e: {
@@ -676,16 +676,16 @@ cardElement
       error: {
         type: string;
       };
-    }) => {}
+    }) => { }
   );
 
-const onceHandler = () => {};
+const onceHandler = () => { };
 cardElement.once('ready', onceHandler);
 cardElement.off('ready', onceHandler);
 cardElement.off('change');
 
 cardNumberElement
-  .on('networkschange', (e: {elementType: 'cardNumber'}) => {})
+  .on('networkschange', (e: { elementType: 'cardNumber' }) => { })
   .on(
     'loaderror',
     (e: {
@@ -693,23 +693,23 @@ cardNumberElement
       error: {
         type: string;
       };
-    }) => {}
+    }) => { }
   );
 
 auBankAccountElement.on(
   'change',
-  (e: StripeAuBankAccountElementChangeEvent) => {}
+  (e: StripeAuBankAccountElementChangeEvent) => { }
 );
 
 auBankAccountElement
-  .on('ready', (e: {elementType: 'auBankAccount'}) => {})
-  .on('focus', (e: {elementType: 'auBankAccount'}) => {})
-  .on('blur', (e: {elementType: 'auBankAccount'}) => {});
+  .on('ready', (e: { elementType: 'auBankAccount' }) => { })
+  .on('focus', (e: { elementType: 'auBankAccount' }) => { })
+  .on('blur', (e: { elementType: 'auBankAccount' }) => { });
 
 ibanElement
-  .on('ready', (e: {elementType: 'iban'}) => {})
-  .on('focus', (e: {elementType: 'iban'}) => {})
-  .on('blur', (e: {elementType: 'iban'}) => {});
+  .on('ready', (e: { elementType: 'iban' }) => { })
+  .on('focus', (e: { elementType: 'iban' }) => { })
+  .on('blur', (e: { elementType: 'iban' }) => { });
 
 paymentRequestButtonElement.on(
   'click',
@@ -724,15 +724,15 @@ let linkAuthenticationElementDefaults: StripeLinkAuthenticationElement = element
 linkAuthenticationElementDefaults = elements.create('linkAuthentication', {});
 
 const linkAuthenticationElement = elements.create('linkAuthentication', {
-  defaultValues: {email: 'foo@bar.com'},
+  defaultValues: { email: 'foo@bar.com' },
 });
 
 linkAuthenticationElement
-  .on('ready', (e: {elementType: 'linkAuthentication'}) => {})
-  .on('focus', (e: {elementType: 'linkAuthentication'}) => {})
-  .on('blur', (e: {elementType: 'linkAuthentication'}) => {})
-  .on('change', (e: StripeLinkAuthenticationElementChangeEvent) => {})
-  .on('loaderstart', (e: {elementType: 'linkAuthentication'}) => {})
+  .on('ready', (e: { elementType: 'linkAuthentication' }) => { })
+  .on('focus', (e: { elementType: 'linkAuthentication' }) => { })
+  .on('blur', (e: { elementType: 'linkAuthentication' }) => { })
+  .on('change', (e: StripeLinkAuthenticationElementChangeEvent) => { })
+  .on('loaderstart', (e: { elementType: 'linkAuthentication' }) => { })
   .on(
     'loaderror',
     (e: {
@@ -740,7 +740,7 @@ linkAuthenticationElement
       error: {
         type: string;
       };
-    }) => {}
+    }) => { }
   );
 
 const retrievedLinkAuthenticationElement: StripeLinkAuthenticationElement | null = elements.getElement(
@@ -751,12 +751,12 @@ let addressElementDefaults: StripeAddressElement = elements.create('address', {
   mode: 'shipping',
 });
 
-addressElementDefaults = elements.create('address', {mode: 'billing'});
+addressElementDefaults = elements.create('address', { mode: 'billing' });
 
 const addressElement = elements.create('address', {
   mode: 'shipping',
   allowedCountries: ['US'],
-  autocomplete: {mode: 'disabled'},
+  autocomplete: { mode: 'disabled' },
   contacts: [
     {
       name: 'Jane Doe',
@@ -794,11 +794,11 @@ const addressElement = elements.create('address', {
 });
 
 addressElement
-  .on('ready', (e: {elementType: 'address'}) => {})
-  .on('focus', (e: {elementType: 'address'}) => {})
-  .on('blur', (e: {elementType: 'address'}) => {})
-  .on('change', (e: StripeAddressElementChangeEvent) => {})
-  .on('loaderstart', (e: {elementType: 'address'}) => {})
+  .on('ready', (e: { elementType: 'address' }) => { })
+  .on('focus', (e: { elementType: 'address' }) => { })
+  .on('blur', (e: { elementType: 'address' }) => { })
+  .on('change', (e: StripeAddressElementChangeEvent) => { })
+  .on('loaderstart', (e: { elementType: 'address' }) => { })
   .on(
     'loaderror',
     (e: {
@@ -806,7 +806,7 @@ addressElement
       error: {
         type: string;
       };
-    }) => {}
+    }) => { }
   );
 
 addressElement.update({
@@ -856,11 +856,11 @@ const shippingAddressElement = elements.create('shippingAddress', {
 });
 
 shippingAddressElement
-  .on('ready', (e: {elementType: 'shippingAddress'}) => {})
-  .on('focus', (e: {elementType: 'shippingAddress'}) => {})
-  .on('blur', (e: {elementType: 'shippingAddress'}) => {})
-  .on('change', (e: StripeShippingAddressElementChangeEvent) => {})
-  .on('loaderstart', (e: {elementType: 'shippingAddress'}) => {})
+  .on('ready', (e: { elementType: 'shippingAddress' }) => { })
+  .on('focus', (e: { elementType: 'shippingAddress' }) => { })
+  .on('blur', (e: { elementType: 'shippingAddress' }) => { })
+  .on('change', (e: StripeShippingAddressElementChangeEvent) => { })
+  .on('loaderstart', (e: { elementType: 'shippingAddress' }) => { })
   .on(
     'loaderror',
     (e: {
@@ -868,7 +868,7 @@ shippingAddressElement
       error: {
         type: string;
       };
-    }) => {}
+    }) => { }
   );
 
 shippingAddressElement.update({
@@ -899,11 +899,11 @@ const expressCheckoutElement = elements.create('expressCheckout', {
     },
   },
   billingAddressRequired: true,
-  business: {name: 'Stripe Shop'},
+  business: { name: 'Stripe Shop' },
   buttonHeight: 55,
   emailRequired: true,
-  layout: {maxRows: 1, maxColumns: 1, overflow: 'auto'},
-  lineItems: [{name: 'Pizza', amount: 1200}],
+  layout: { maxRows: 1, maxColumns: 1, overflow: 'auto' },
+  lineItems: [{ name: 'Pizza', amount: 1200 }],
   paymentMethodOrder: ['apple_pay', 'google_pay'],
   paymentMethods: {
     googlePay: 'always',
@@ -912,7 +912,7 @@ const expressCheckoutElement = elements.create('expressCheckout', {
   },
   phoneNumberRequired: true,
   shippingAddressRequired: true,
-  shippingRates: [{id: 'free-shipping', amount: 0, displayName: 'Free'}],
+  shippingRates: [{ id: 'free-shipping', amount: 0, displayName: 'Free' }],
   buttonTheme: {
     applePay: 'white-outline',
     googlePay: 'white',
@@ -945,7 +945,7 @@ expressCheckoutElement
     (e: {
       elementType: 'expressCheckout';
       availablePaymentMethods: undefined | AvailablePaymentMethods;
-    }) => {}
+    }) => { }
   )
   .on('click', (e: StripeExpressCheckoutElementClickEvent) => {
     e.resolve({
@@ -998,9 +998,9 @@ expressCheckoutElement
   .on('click', (e: StripeExpressCheckoutElementClickEvent) => {
     e.reject();
   })
-  .on('focus', (e: {elementType: 'expressCheckout'}) => {})
-  .on('blur', (e: {elementType: 'expressCheckout'}) => {})
-  .on('escape', (e: {elementType: 'expressCheckout'}) => {})
+  .on('focus', (e: { elementType: 'expressCheckout' }) => { })
+  .on('blur', (e: { elementType: 'expressCheckout' }) => { })
+  .on('escape', (e: { elementType: 'expressCheckout' }) => { })
   .on(
     'loaderror',
     (e: {
@@ -1008,22 +1008,22 @@ expressCheckoutElement
       error: {
         type: string;
       };
-    }) => {}
+    }) => { }
   );
 
-expressCheckoutElement.on('confirm', ({paymentFailed, expressPaymentType}) => {
+expressCheckoutElement.on('confirm', ({ paymentFailed, expressPaymentType }) => {
   paymentFailed();
   paymentFailed({});
-  paymentFailed({reason: 'invalid_shipping_address'});
-  paymentFailed({reason: 'invalid_billing_address'});
-  paymentFailed({reason: 'invalid_payment_data'});
-  paymentFailed({reason: 'address_unserviceable'});
-  paymentFailed({message: 'Test error message'});
+  paymentFailed({ reason: 'invalid_shipping_address' });
+  paymentFailed({ reason: 'invalid_billing_address' });
+  paymentFailed({ reason: 'invalid_payment_data' });
+  paymentFailed({ reason: 'address_unserviceable' });
+  paymentFailed({ message: 'Test error message' });
 });
 
 expressCheckoutElement.on(
   'cancel',
-  (e: {elementType: 'expressCheckout'}) => {}
+  (e: { elementType: 'expressCheckout' }) => { }
 );
 
 expressCheckoutElement.on(
@@ -1032,7 +1032,7 @@ expressCheckoutElement.on(
     e.reject();
     e.resolve();
     e.resolve({
-      lineItems: [{name: 'Pizza', amount: 1200}],
+      lineItems: [{ name: 'Pizza', amount: 1200 }],
     });
     e.resolve({
       applePay: {
@@ -1090,7 +1090,7 @@ expressCheckoutElement.on(
     e.reject();
     e.resolve();
     e.resolve({
-      lineItems: [{name: 'Pizza', amount: 1200}],
+      lineItems: [{ name: 'Pizza', amount: 1200 }],
     });
     e.resolve({
       applePay: {
@@ -1153,7 +1153,7 @@ expressCheckoutElement.update({
   billingAddressRequired: true,
   buttonHeight: 55,
   emailRequired: true,
-  layout: {maxRows: 1, maxColumns: 1, overflow: 'auto'},
+  layout: { maxRows: 1, maxColumns: 1, overflow: 'auto' },
   paymentMethodOrder: ['apple_pay', 'google_pay'],
   phoneNumberRequired: true,
   shippingAddressRequired: true,
@@ -1164,9 +1164,9 @@ const retrievedExpressCheckoutElement = elements.getElement('expressCheckout');
 declare const currencySelectorElement: StripeCurrencySelectorElement;
 
 currencySelectorElement
-  .on('ready', (e: {elementType: 'currencySelector'}) => {})
-  .on('focus', (e: {elementType: 'currencySelector'}) => {})
-  .on('blur', (e: {elementType: 'currencySelector'}) => {})
+  .on('ready', (e: { elementType: 'currencySelector' }) => { })
+  .on('focus', (e: { elementType: 'currencySelector' }) => { })
+  .on('blur', (e: { elementType: 'currencySelector' }) => { })
   .on(
     'loaderror',
     (e: {
@@ -1174,17 +1174,17 @@ currencySelectorElement
       error: {
         type: string;
       };
-    }) => {}
+    }) => { }
   );
 
 declare const taxIdElement: StripeTaxIdElement;
 
 taxIdElement
-  .on('ready', (e: {elementType: 'taxId'}) => {})
-  .on('focus', (e: {elementType: 'taxId'}) => {})
-  .on('blur', (e: {elementType: 'taxId'}) => {})
-  .on('escape', (e: {elementType: 'taxId'}) => {})
-  .on('loaderstart', (e: {elementType: 'taxId'}) => {})
+  .on('ready', (e: { elementType: 'taxId' }) => { })
+  .on('focus', (e: { elementType: 'taxId' }) => { })
+  .on('blur', (e: { elementType: 'taxId' }) => { })
+  .on('escape', (e: { elementType: 'taxId' }) => { })
+  .on('loaderstart', (e: { elementType: 'taxId' }) => { })
   .on(
     'loaderror',
     (e: {
@@ -1192,7 +1192,7 @@ taxIdElement
       error: {
         type: string;
       };
-    }) => {}
+    }) => { }
   )
   .on(
     'change',
@@ -1207,7 +1207,7 @@ taxIdElement
         taxIdType: TaxIdType;
         externalTaxIdType: ExternalTaxIdType;
       };
-    }) => {}
+    }) => { }
   );
 
 const createdTaxIdElement: StripeTaxIdElement = elements.create('taxId', {
@@ -1216,8 +1216,8 @@ const createdTaxIdElement: StripeTaxIdElement = elements.create('taxId', {
     businessName: 'auto',
   },
   validation: {
-    businessName: {required: 'auto'},
-    taxId: {required: 'always'},
+    businessName: { required: 'auto' },
+    taxId: { required: 'always' },
   },
   defaultValues: {
     businessName: 'Acme, Inc.',
@@ -1236,13 +1236,13 @@ retrievedTaxIdElement?.mount('#bogus-container');
 createdTaxIdElement.update({
   visibility: 'auto',
   validation: {
-    taxId: {required: 'never'},
+    taxId: { required: 'never' },
   },
 });
 
 createdTaxIdElement.getValue().then((res) => {
   if (res.complete) {
-    const {taxIdType, externalTaxIdType} = res.value;
+    const { taxIdType, externalTaxIdType } = res.value;
     console.log(taxIdType, externalTaxIdType);
   }
 });
@@ -1250,10 +1250,10 @@ createdTaxIdElement.getValue().then((res) => {
 declare const paymentFormElement: StripePaymentFormElement;
 
 paymentFormElement
-  .on('ready', (e: {elementType: 'paymentForm'}) => {})
+  .on('ready', (e: { elementType: 'paymentForm' }) => { })
   .on(
     'loaderror',
-    (e: {elementType: 'paymentForm'; error: {type: string}}) => {}
+    (e: { elementType: 'paymentForm'; error: { type: string } }) => { }
   );
 
 auBankAccountElement.destroy();
@@ -1276,18 +1276,18 @@ stripe.createRadarSession();
 stripe
   .createRadarSession()
   .then(
-    (result: {radarSession?: Record<any, any>; error?: StripeError}) => null
+    (result: { radarSession?: Record<any, any>; error?: StripeError }) => null
   );
 
-stripe.createToken(cardElement, {name: ''});
+stripe.createToken(cardElement, { name: '' });
 
 stripe
   .createToken(cardElement)
-  .then(({token, error}: {token?: Token; error?: StripeError}) => {
+  .then(({ token, error }: { token?: Token; error?: StripeError }) => {
     console.log(token);
   });
 
-stripe.createToken(cardElement).then(({token, error}) => {
+stripe.createToken(cardElement).then(({ token, error }) => {
   if (error) {
     console.log(error.code);
   } else if (token) {
@@ -1307,7 +1307,7 @@ stripe.createToken(cardNumberElement);
 
 stripe.createToken('cvc_update', cardCvcElement);
 
-stripe.createToken('pii', {personal_id_number: ''});
+stripe.createToken('pii', { personal_id_number: '' });
 
 stripe.createToken(ibanElement, {
   currency: '',
@@ -1336,11 +1336,11 @@ stripe.createToken('account', {
 stripe.createToken('person', {
   first_name: 'Jane',
   last_name: 'Doe',
-  relationship: {owner: true},
+  relationship: { owner: true },
 });
 
 const createSource = async () => {
-  const {source, error} = await stripe.createSource(ibanElement, {
+  const { source, error } = await stripe.createSource(ibanElement, {
     type: 'sepa_debit',
     currency: 'eur',
     owner: {
@@ -1358,7 +1358,7 @@ const createSource = async () => {
 };
 
 const createSourceRaw = async () => {
-  const {source, error} = await stripe.createSource({
+  const { source, error } = await stripe.createSource({
     type: 'ideal',
     amount: 1099,
     currency: 'eur',
@@ -1478,7 +1478,7 @@ stripe.createSource({
   type: 'ideal',
   amount: 1099,
   currency: 'eur',
-  ideal: {bank: ''},
+  ideal: { bank: '' },
   statement_descriptor: 'ORDER AT11990',
   owner: {
     name: 'Jenny Rosen',
@@ -1532,11 +1532,11 @@ stripe.createSource({
   },
 });
 
-stripe.retrieveSource({id: '', client_secret: ''}).then((result) => {
+stripe.retrieveSource({ id: '', client_secret: '' }).then((result) => {
   console.log(result.source!.type);
 });
 
-stripe.retrieveSource({id: '', client_secret: ''}).then(({source, error}) => {
+stripe.retrieveSource({ id: '', client_secret: '' }).then(({ source, error }) => {
   if (error) {
     console.log(error.code);
   } else if (source) {
@@ -1544,7 +1544,7 @@ stripe.retrieveSource({id: '', client_secret: ''}).then(({source, error}) => {
   }
 });
 
-stripe.retrieveSource({id: '', client_secret: ''}).then((res) => {
+stripe.retrieveSource({ id: '', client_secret: '' }).then((res) => {
   if (res.error) {
     console.log(res.error.code);
   } else {
@@ -1555,10 +1555,10 @@ stripe.retrieveSource({id: '', client_secret: ''}).then((res) => {
 stripe
   .confirmAcssDebitPayment('', {
     payment_method: {
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAcssDebitPayment('', {
@@ -1568,18 +1568,18 @@ stripe
         transit_number: '',
         account_number: '',
       },
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAcssDebitPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAcssDebitPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAcssDebitPayment('', {payment_method: ''}, {skipMandate: true})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAcssDebitPayment('', { payment_method: '' }, { skipMandate: true })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmUsBankAccountPayment('', {
@@ -1589,10 +1589,10 @@ stripe
         routing_number: '',
         account_holder_type: '',
       },
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmUsBankAccountPayment('', {
@@ -1603,82 +1603,82 @@ stripe
         account_holder_type: '',
         account_type: '',
       },
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmUsBankAccountPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmUsBankAccountPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAlipayPayment('', {
     payment_method: '',
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAlipayPayment('', {return_url: window.location.href})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAlipayPayment('', { return_url: window.location.href })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAlipayPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAlipayPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAlipayPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAlipayPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAlipayPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAuBecsDebitPayment('', {
     payment_method: {
       au_becs_debit: auBankAccountElement,
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAuBecsDebitPayment('', {
     payment_method: {
-      au_becs_debit: {bsb_number: '', account_number: ''},
-      billing_details: {name: '', email: ''},
+      au_becs_debit: { bsb_number: '', account_number: '' },
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAuBecsDebitPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAuBecsDebitPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAuBecsDebitPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmBancontactPayment('', {
-    payment_method: {billing_details: {name: 'Jenny Rosen'}},
+    payment_method: { billing_details: { name: 'Jenny Rosen' } },
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmBancontactPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmBancontactPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmBancontactPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmBancontactPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmBancontactPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmBlikPayment(
@@ -1700,7 +1700,7 @@ stripe
       handleActions: false,
     }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmBoletoPayment(
@@ -1727,52 +1727,54 @@ stripe
       handleActions: false,
     }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmBoletoPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmBoletoPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmBoletoPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmBoletoPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmBoletoPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCardPayment('', {
-    payment_method: {card: cardElement, billing_details: {name: ''}},
+    payment_method: { card: cardElement, billing_details: { name: '' } },
   })
   .then((result) => console.log(result.paymentIntent!.amount));
 
 stripe
-  .confirmCardPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmCardPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmCardPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmCardPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmCardPayment('', {payment_method: {card: {token: ''}}})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmCardPayment('', { payment_method: { card: { token: '' } } })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCardPayment('', {
     payment_method: '',
-    payment_method_options: {card: {cvc: cardCvcElement, network: ''}},
+    payment_method_options: { card: { cvc: cardCvcElement, network: '' } },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCardPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
-stripe.confirmCardPayment('').then(({paymentIntent, error}) => {
+stripe.confirmCardPayment('').then(({ paymentIntent, error }) => {
   if (error) {
     console.log(error.code);
+    console.log(error.validation_message);
+    console.log(error.any_other_field);
   } else if (paymentIntent) {
     console.log(paymentIntent.id);
   }
@@ -1791,13 +1793,13 @@ stripe
     payment_method: '',
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCashappPayment('', {
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCashappPayment(
@@ -1810,7 +1812,7 @@ stripe
       handleActions: false,
     }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCustomerBalancePayment(
@@ -1824,7 +1826,7 @@ stripe
       handleActions: false,
     }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCustomerBalancePayment(
@@ -1847,7 +1849,7 @@ stripe
       handleActions: false,
     }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCustomerBalancePayment(
@@ -1872,7 +1874,7 @@ stripe
       handleActions: false,
     }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCustomerBalancePayment(
@@ -1897,127 +1899,127 @@ stripe
       handleActions: false,
     }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmEpsPayment('', {
     payment_method: {
-      eps: {bank: 'bank_austria'},
-      billing_details: {name: 'Jenny Rosen'},
+      eps: { bank: 'bank_austria' },
+      billing_details: { name: 'Jenny Rosen' },
     },
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmEpsPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmEpsPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmEpsPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmEpsPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmEpsPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmFpxPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmFpxPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmFpxPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmFpxPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmFpxPayment('', {payment_method: {fpx: {bank: ''}}})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmFpxPayment('', { payment_method: { fpx: { bank: '' } } })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmFpxPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmGiropayPayment('', {
-    payment_method: {billing_details: {name: 'Jenny Rosen'}},
+    payment_method: { billing_details: { name: 'Jenny Rosen' } },
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmGiropayPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmGiropayPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmGiropayPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmGiropayPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmGiropayPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmGrabPayPayment('', {return_url: window.location.href})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmGrabPayPayment('', { return_url: window.location.href })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmGrabPayPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmGrabPayPayment('', {payment_method: {grabpay: {}}})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmGrabPayPayment('', { payment_method: { grabpay: {} } })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmGrabPayPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmGrabPayPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmGrabPayPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmGrabPayPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmIdealPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmIdealPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmIdealPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmIdealPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmIdealPayment('', {payment_method: {ideal: {bank: ''}}})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmIdealPayment('', { payment_method: { ideal: { bank: '' } } })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmIdealPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmKlarnaPayment('', {
-    payment_method: {billing_details: {address: {country: 'DE'}}},
+    payment_method: { billing_details: { address: { country: 'DE' } } },
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmKlarnaPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmKlarnaPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmKlarnaPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmKlarnaPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmKlarnaPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmKonbiniPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmKonbiniPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmKonbiniPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmKonbiniPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmKonbiniPayment('', {
@@ -2028,7 +2030,7 @@ stripe
       },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmKonbiniPayment('', {
@@ -2044,32 +2046,32 @@ stripe
       },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmKonbiniPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmMobilepayPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmMobilepayPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmMobilepayPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmMobilepayPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmMobilepayPayment('', {
     payment_method: '',
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmMobilepayPayment('', {
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmMobilepayPayment(
@@ -2082,33 +2084,33 @@ stripe
       handleActions: false,
     }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmMultibancoPayment('', {
-    payment_method: {billing_details: {email: 'jenny@example.com'}},
+    payment_method: { billing_details: { email: 'jenny@example.com' } },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmMultibancoPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmMultibancoPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmMultibancoPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmMultibancoPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmMultibancoPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmOxxoPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmOxxoPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmOxxoPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmOxxoPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmOxxoPayment('', {
@@ -2119,46 +2121,46 @@ stripe
       },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmOxxoPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmP24Payment('', {
-    payment_method: {billing_details: {email: 'jenny@example.com'}},
+    payment_method: { billing_details: { email: 'jenny@example.com' } },
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmP24Payment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmP24Payment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmP24Payment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmP24Payment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmP24Payment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmP24Payment('', {
     payment_method: {
-      p24: {bank: 'ing'},
-      billing_details: {email: 'jenny@example.com'},
+      p24: { bank: 'ing' },
+      billing_details: { email: 'jenny@example.com' },
     },
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmP24Payment('', {
     payment_method: {
-      p24: {bank: 'ing'},
-      billing_details: {email: 'jenny@example.com'},
+      p24: { bank: 'ing' },
+      billing_details: { email: 'jenny@example.com' },
     },
     payment_method_options: {
       p24: {
@@ -2167,11 +2169,11 @@ stripe
     },
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPayNowPayment('', {})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPayNowPayment(
@@ -2179,9 +2181,9 @@ stripe
     {
       payment_method: '',
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPayNowPayment(
@@ -2194,9 +2196,9 @@ stripe
         },
       },
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPayNowPayment(
@@ -2209,32 +2211,32 @@ stripe
         },
       },
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPayPalPayment('', {
     return_url: 'https://example.com',
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPayPalPayment('', {
     payment_method: '',
     return_url: 'https://example.com',
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPixPayment('', {})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPixPayment('', {
     payment_method: '',
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPixPayment(
@@ -2242,13 +2244,13 @@ stripe
     {
       payment_method: '',
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPromptPayPayment('', {})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPromptPayPayment(
@@ -2256,9 +2258,9 @@ stripe
     {
       payment_method: '',
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPromptPayPayment(
@@ -2271,35 +2273,35 @@ stripe
         },
       },
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSepaDebitPayment('', {
     payment_method: {
       sepa_debit: ibanElement,
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSepaDebitPayment('', {
     payment_method: {
-      sepa_debit: {iban: ''},
-      billing_details: {name: '', email: ''},
+      sepa_debit: { iban: '' },
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmSepaDebitPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmSepaDebitPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSepaDebitPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSofortPayment('', {
@@ -2313,44 +2315,44 @@ stripe
     },
     return_url: '',
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSofortPayment('', {
     payment_method: '',
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSofortPayment('')
-  .then(({paymentIntent}: {paymentIntent?: PaymentIntent}) => {});
+  .then(({ paymentIntent }: { paymentIntent?: PaymentIntent }) => { });
 
 stripe
-  .confirmSofortPayment('', {}, {handleActions: false})
-  .then(({paymentIntent}: {paymentIntent?: PaymentIntent}) => {});
+  .confirmSofortPayment('', {}, { handleActions: false })
+  .then(({ paymentIntent }: { paymentIntent?: PaymentIntent }) => { });
 
 stripe
   .confirmTwintPayment('', {
-    payment_method: {billing_details: {name: 'Jenny Rosen'}},
+    payment_method: { billing_details: { name: 'Jenny Rosen' } },
     return_url: window.location.href,
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmTwintPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmTwintPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmTwintPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmTwintPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmTwintPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmWechatPayPayment('', {}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmWechatPayPayment('', {}, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmWechatPayPayment(
@@ -2358,9 +2360,9 @@ stripe
     {
       payment_method: '',
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmWechatPayPayment(
@@ -2373,9 +2375,9 @@ stripe
         },
       },
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmWechatPayPayment(
@@ -2387,9 +2389,9 @@ stripe
         },
       },
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmWechatPayPayment(
@@ -2405,59 +2407,59 @@ stripe
         wechat_pay: {},
       },
     },
-    {handleActions: false}
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAffirmPayment('', {return_url: window.location.href})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAffirmPayment('', { return_url: window.location.href })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAffirmPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAffirmPayment('', {payment_method: {affirm: {}}})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAffirmPayment('', { payment_method: { affirm: {} } })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAffirmPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAffirmPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAffirmPayment('', {payment_method: ''}, {handleActions: false})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAffirmPayment('', { payment_method: '' }, { handleActions: false })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAfterpayClearpayPayment('', {return_url: window.location.href})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAfterpayClearpayPayment('', { return_url: window.location.href })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAfterpayClearpayPayment('')
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAfterpayClearpayPayment('', {payment_method: {afterpay_clearpay: {}}})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAfterpayClearpayPayment('', { payment_method: { afterpay_clearpay: {} } })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAfterpayClearpayPayment('', {payment_method: ''})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .confirmAfterpayClearpayPayment('', { payment_method: '' })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAfterpayClearpayPayment(
     '',
-    {payment_method: ''},
-    {handleActions: false}
+    { payment_method: '' },
+    { handleActions: false }
   )
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe
   .handleCardAction('')
-  .then(({paymentIntent}: {paymentIntent?: PaymentIntent}) => {});
+  .then(({ paymentIntent }: { paymentIntent?: PaymentIntent }) => { });
 
-stripe.handleNextAction({clientSecret: ''}).then((res) => {
+stripe.handleNextAction({ clientSecret: '' }).then((res) => {
   if (res.paymentIntent) {
     const paymentIntentId = res.paymentIntent.id;
   }
@@ -2470,8 +2472,8 @@ stripe.handleNextAction({clientSecret: ''}).then((res) => {
 });
 
 stripe
-  .verifyMicrodepositsForPayment('', {amounts: [32, 45]})
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => {
+  .verifyMicrodepositsForPayment('', { amounts: [32, 45] })
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => {
     if (result.paymentIntent?.next_action?.verify_with_microdeposits) {
       console.log(
         result.paymentIntent?.next_action?.verify_with_microdeposits
@@ -2519,13 +2521,13 @@ stripe.createPaymentMethod({
 
 stripe.createPaymentMethod({
   type: 'acss_debit',
-  billing_details: {name: '', email: ''},
+  billing_details: { name: '', email: '' },
 });
 
 stripe.createPaymentMethod({
   type: 'acss_debit',
-  acss_debit: {institution_number: '', transit_number: '', account_number: ''},
-  billing_details: {name: '', email: ''},
+  acss_debit: { institution_number: '', transit_number: '', account_number: '' },
+  billing_details: { name: '', email: '' },
 });
 
 stripe
@@ -2580,12 +2582,12 @@ stripe
     params: {
       payment_method_type: '',
       payment_method_data: {
-        billing_details: {name: 'Jenny Rosen', email: 'jenny@example.com'},
+        billing_details: { name: 'Jenny Rosen', email: 'jenny@example.com' },
       },
     },
     expand: ['payment_method'],
   })
-  .then((result: {paymentIntent?: PaymentIntent; error?: StripeError}) => null);
+  .then((result: { paymentIntent?: PaymentIntent; error?: StripeError }) => null);
 
 stripe.createPaymentMethod({
   type: 'us_bank_account',
@@ -2594,22 +2596,22 @@ stripe.createPaymentMethod({
     routing_number: '',
     account_holder_type: '',
   },
-  billing_details: {name: '', email: ''},
+  billing_details: { name: '', email: '' },
 });
 
 stripe.createPaymentMethod({
   type: 'au_becs_debit',
   au_becs_debit: auBankAccountElement,
-  billing_details: {name: 'Jenny Rosen', email: 'jenny@example.com'},
+  billing_details: { name: 'Jenny Rosen', email: 'jenny@example.com' },
 });
 
 stripe
   .createPaymentMethod({
     type: 'au_becs_debit',
-    au_becs_debit: {bsb_number: '', account_number: ''},
-    billing_details: {name: 'Jenny Rosen', email: 'jenny@example.com'},
+    au_becs_debit: { bsb_number: '', account_number: '' },
+    billing_details: { name: 'Jenny Rosen', email: 'jenny@example.com' },
   })
-  .then(({paymentMethod}) => {
+  .then(({ paymentMethod }) => {
     if (
       paymentMethod &&
       paymentMethod.au_becs_debit &&
@@ -2623,7 +2625,7 @@ stripe
   .createPaymentMethod({
     type: 'card',
     card: cardElement,
-    billing_details: {name: 'Jenny Rosen'},
+    billing_details: { name: 'Jenny Rosen' },
   })
   .then((result) => {
     if (result.paymentMethod) {
@@ -2636,7 +2638,7 @@ stripe
     type: 'card',
     card: cardElement,
   })
-  .then(({paymentMethod, error}) => {
+  .then(({ paymentMethod, error }) => {
     if (error) {
       console.log(error.code);
     } else if (paymentMethod) {
@@ -2659,7 +2661,7 @@ stripe
 
 stripe.createPaymentMethod({
   type: 'fpx',
-  fpx: {bank: ''},
+  fpx: { bank: '' },
 });
 
 stripe.createPaymentMethod({
@@ -2678,25 +2680,25 @@ stripe.createPaymentMethod({
 
 stripe.createPaymentMethod({
   type: 'ideal',
-  ideal: {bank: ''},
+  ideal: { bank: '' },
 });
 
 stripe.createPaymentMethod({
   type: 'sepa_debit',
   sepa_debit: ibanElement,
-  billing_details: {name: 'Jenny Rosen', email: 'jenny@example.com'},
+  billing_details: { name: 'Jenny Rosen', email: 'jenny@example.com' },
 });
 
 stripe.createPaymentMethod({
   type: 'sepa_debit',
-  sepa_debit: {iban: ''},
-  billing_details: {name: 'Jenny Rosen', email: 'jenny@example.com'},
+  sepa_debit: { iban: '' },
+  billing_details: { name: 'Jenny Rosen', email: 'jenny@example.com' },
 });
 
 stripe.createPaymentMethod({
   type: 'sofort',
-  sofort: {country: ''},
-  billing_details: {name: ''},
+  sofort: { country: '' },
+  billing_details: { name: '' },
 });
 
 stripe.createPaymentMethod({
@@ -2719,12 +2721,12 @@ stripe.createPaymentMethod({
 
 stripe.createPaymentMethod({
   type: 'paynow',
-  billing_details: {name: '', email: ''},
+  billing_details: { name: '', email: '' },
 });
 
 stripe.createPaymentMethod({
   type: 'promptpay',
-  billing_details: {name: '', email: ''},
+  billing_details: { name: '', email: '' },
 });
 
 stripe.retrievePaymentIntent('{PAYMENT_INTENT_CLIENT_SECRET}');
@@ -2732,10 +2734,10 @@ stripe.retrievePaymentIntent('{PAYMENT_INTENT_CLIENT_SECRET}');
 stripe
   .confirmAcssDebitSetup('', {
     payment_method: {
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAcssDebitSetup('', {
@@ -2745,18 +2747,18 @@ stripe
         transit_number: '',
         account_number: '',
       },
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAcssDebitSetup('', {payment_method: ''})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmAcssDebitSetup('', { payment_method: '' })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAcssDebitSetup('', {payment_method: ''}, {skipMandate: true})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmAcssDebitSetup('', { payment_method: '' }, { skipMandate: true })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmUsBankAccountSetup('', {
@@ -2766,10 +2768,10 @@ stripe
         routing_number: '',
         account_holder_type: '',
       },
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmUsBankAccountSetup('', {
@@ -2780,45 +2782,45 @@ stripe
         account_holder_type: '',
         account_type: '',
       },
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmUsBankAccountSetup('', {payment_method: ''})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmUsBankAccountSetup('', { payment_method: '' })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAuBecsDebitSetup('', {
     payment_method: {
       au_becs_debit: auBankAccountElement,
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmAuBecsDebitSetup('', {payment_method: ''})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmAuBecsDebitSetup('', { payment_method: '' })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmAuBecsDebitSetup('', {
     payment_method: {
-      au_becs_debit: {bsb_number: '', account_number: ''},
-      billing_details: {name: '', email: ''},
+      au_becs_debit: { bsb_number: '', account_number: '' },
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmBacsDebitSetup('', {payment_method: ''})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmBacsDebitSetup('', { payment_method: '' })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmBacsDebitSetup('', {
     payment_method: {
-      bacs_debit: {sort_code: '', account_number: ''},
+      bacs_debit: { sort_code: '', account_number: '' },
       billing_details: {
         name: '',
         email: '',
@@ -2831,11 +2833,11 @@ stripe
       },
     },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmBancontactSetup('', {payment_method: ''})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmBancontactSetup('', { payment_method: '' })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmBancontactSetup('', {
@@ -2847,31 +2849,31 @@ stripe
     },
     return_url: '',
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCardSetup('', {
-    payment_method: {card: cardElement, billing_details: {name: ''}},
+    payment_method: { card: cardElement, billing_details: { name: '' } },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmCardSetup('', {payment_method: ''})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmCardSetup('', { payment_method: '' })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmCardSetup('', {payment_method: ''}, {handleActions: false})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmCardSetup('', { payment_method: '' }, { handleActions: false })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmCardSetup('', {payment_method: {card: {token: ''}}})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmCardSetup('', { payment_method: { card: { token: '' } } })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCardSetup('')
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
-stripe.confirmCardSetup('').then(({setupIntent, error}) => {
+stripe.confirmCardSetup('').then(({ setupIntent, error }) => {
   if (error) {
     console.log(error.code);
   } else if (setupIntent) {
@@ -2892,13 +2894,13 @@ stripe
     payment_method: '',
     return_url: window.location.href,
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCashappSetup('', {
     return_url: window.location.href,
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmCashappSetup(
@@ -2911,11 +2913,11 @@ stripe
       handleActions: false,
     }
   )
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmIdealSetup('', {payment_method: ''})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmIdealSetup('', { payment_method: '' })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmIdealSetup('', {
@@ -2930,40 +2932,40 @@ stripe
     },
     return_url: '',
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmPayPalSetup('', {return_url: 'https://example.com'})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmPayPalSetup('', { return_url: 'https://example.com' })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmPayPalSetup('', {
     payment_method: '',
     return_url: 'https://example.com',
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSepaDebitSetup('', {
     payment_method: {
       sepa_debit: ibanElement,
-      billing_details: {name: '', email: ''},
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmSepaDebitSetup('', {payment_method: ''})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmSepaDebitSetup('', { payment_method: '' })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSepaDebitSetup('', {
     payment_method: {
-      sepa_debit: {iban: ''},
-      billing_details: {name: '', email: ''},
+      sepa_debit: { iban: '' },
+      billing_details: { name: '', email: '' },
     },
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSofortSetup('', {
@@ -2977,25 +2979,25 @@ stripe
     },
     return_url: '',
   })
-  .then((result: {setupIntent?: SetupIntent}) => null);
+  .then((result: { setupIntent?: SetupIntent }) => null);
 
 stripe
   .confirmSofortSetup('', {
     payment_method: '',
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .confirmSofortSetup('')
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .confirmSofortSetup('', {}, {handleActions: false})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .confirmSofortSetup('', {}, { handleActions: false })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
-  .verifyMicrodepositsForSetup('', {amounts: [32, 45]})
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => {
+  .verifyMicrodepositsForSetup('', { amounts: [32, 45] })
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => {
     if (result.setupIntent?.next_action?.verify_with_microdeposits) {
       console.log(
         result.setupIntent?.next_action?.verify_with_microdeposits.arrival_date
@@ -3008,7 +3010,7 @@ stripe
     amounts: [32, 45],
     descriptor_code: '123456',
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .collectBankAccountForSetup({
@@ -3016,16 +3018,16 @@ stripe
     params: {
       payment_method_type: '',
       payment_method_data: {
-        billing_details: {name: 'Jenny Rosen', email: 'jenny@example.com'},
+        billing_details: { name: 'Jenny Rosen', email: 'jenny@example.com' },
       },
     },
     expand: ['payment_method'],
   })
-  .then((result: {setupIntent?: SetupIntent; error?: StripeError}) => null);
+  .then((result: { setupIntent?: SetupIntent; error?: StripeError }) => null);
 
 stripe
   .retrieveSetupIntent('')
-  .then((result: {setupIntent?: SetupIntent}) => null);
+  .then((result: { setupIntent?: SetupIntent }) => null);
 
 stripe.registerAppInfo({
   name: 'Demo_Wrapper',
@@ -3408,7 +3410,7 @@ stripe
 const paymentRequest: PaymentRequest = stripe.paymentRequest({
   country: 'US',
   currency: 'usd',
-  total: {label: 'Demo total', amount: 1000},
+  total: { label: 'Demo total', amount: 1000 },
   requestPayerName: true,
   requestPayerEmail: true,
   applePay: {
@@ -3427,13 +3429,13 @@ const paymentRequest: PaymentRequest = stripe.paymentRequest({
 const paymentRequestOBO: PaymentRequest = stripe.paymentRequest({
   country: 'US',
   currency: 'usd',
-  total: {label: 'Demo total', amount: 1000},
+  total: { label: 'Demo total', amount: 1000 },
   onBehalfOf: 'acct_123',
 });
 
 paymentRequest.canMakePayment().then((result) => {
   if (result) {
-    const {applePay}: CanMakePaymentResult = result;
+    const { applePay }: CanMakePaymentResult = result;
     console.log(applePay);
   }
 });
@@ -3466,7 +3468,7 @@ paymentRequest.update({
   },
 });
 
-paymentRequest.on('paymentmethod', function(ev) {
+paymentRequest.on('paymentmethod', function (ev) {
   console.log(ev.paymentMethod.id);
   ev.complete('success');
   ev.complete('fail');
@@ -3476,13 +3478,13 @@ paymentRequest.on('paymentmethod', function(ev) {
   ev.complete('invalid_shipping_address');
 });
 
-paymentRequest.on('token', function(ev) {
+paymentRequest.on('token', function (ev) {
   console.log(ev.token.id);
   console.log(ev.payerEmail);
   ev.complete('success');
 });
 
-paymentRequest.on('source', function(ev) {
+paymentRequest.on('source', function (ev) {
   console.log(ev.source.id);
   console.log(ev.walletName);
   console.log(ev.methodName);
@@ -3502,17 +3504,17 @@ paymentRequest.on('source', function(ev) {
   } = ev.shippingAddress!;
 });
 
-paymentRequest.on('shippingaddresschange', function(ev) {
+paymentRequest.on('shippingaddresschange', function (ev) {
   if (ev.shippingAddress.country !== 'US') {
-    ev.updateWith({status: 'invalid_shipping_address'});
+    ev.updateWith({ status: 'invalid_shipping_address' });
   } else {
     fetch('/calculateShipping', {
-      body: JSON.stringify({shippingAddress: ev.shippingAddress}),
+      body: JSON.stringify({ shippingAddress: ev.shippingAddress }),
     })
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
-      .then(function(result) {
+      .then(function (result) {
         ev.updateWith({
           status: 'success',
           shippingOptions: result.supportedShippingOptions,
@@ -3531,7 +3533,7 @@ paymentRequest.on('shippingaddresschange', function(ev) {
   }
 });
 
-paymentRequest.on('cancel', () => {});
+paymentRequest.on('cancel', () => { });
 
 paymentRequest.on(
   'shippingoptionchange',
@@ -3541,7 +3543,7 @@ paymentRequest.on(
     console.log(selectedOption);
 
     e.updateWith({
-      total: {amount: 2, label: ''},
+      total: { amount: 2, label: '' },
       shippingOptions: [
         {
           id: 'someUniqueID',
@@ -3580,13 +3582,13 @@ issuingAddToWalletButtonElement.update({
   buttonHeight: 44,
 });
 
-issuingAddToWalletButtonElement.on('click', () => {});
-issuingAddToWalletButtonElement.once('click', () => {});
-issuingAddToWalletButtonElement.off('click', () => {});
+issuingAddToWalletButtonElement.on('click', () => { });
+issuingAddToWalletButtonElement.once('click', () => { });
+issuingAddToWalletButtonElement.off('click', () => { });
 
-issuingAddToWalletButtonElement.on('success', () => {});
-issuingAddToWalletButtonElement.once('success', () => {});
-issuingAddToWalletButtonElement.off('success', () => {});
+issuingAddToWalletButtonElement.on('success', () => { });
+issuingAddToWalletButtonElement.once('success', () => { });
+issuingAddToWalletButtonElement.off('success', () => { });
 
 const issuingCardElement = elements.create('issuingCardNumberDisplay', {
   issuingCard: '',
@@ -3696,8 +3698,8 @@ stripe.createEphemeralKeyNonce({
   issuingCard: '',
 });
 
-stripe.initCheckout({clientSecret: Promise.resolve('cs_test_foo')});
-const checkout = stripe.initCheckout({clientSecret: 'cs_test_foo'});
+stripe.initCheckout({ clientSecret: Promise.resolve('cs_test_foo') });
+const checkout = stripe.initCheckout({ clientSecret: 'cs_test_foo' });
 const checkoutPaymentElement: StripePaymentElement = checkout.createPaymentElement();
 checkout.getPaymentElement();
 const checkoutAddressElement: StripeAddressElement = checkout.createBillingAddressElement();
@@ -3718,19 +3720,19 @@ checkout.loadFonts([
 
 checkout.loadActions().then((loadActionsResult) => {
   if (loadActionsResult.type === 'success') {
-    const {actions} = loadActionsResult;
+    const { actions } = loadActionsResult;
     actions.applyPromotionCode('code').then((result) => {
       if (result.type === 'success') {
-        const {session} = result;
+        const { session } = result;
       } else {
-        const {error} = result;
+        const { error } = result;
       }
     });
     actions.removePromotionCode().then((result) => {
       if (result.type === 'success') {
-        const {session} = result;
+        const { session } = result;
       } else {
-        const {error} = result;
+        const { error } = result;
       }
     });
 
@@ -3739,22 +3741,22 @@ checkout.loadActions().then((loadActionsResult) => {
       minorUnitsAmountDivisor,
       lineItems,
       total: {
-        taxExclusive: {amount, minorUnitsAmount},
+        taxExclusive: { amount, minorUnitsAmount },
       },
     } = session;
     const {
-      subtotal: {amount: _, minorUnitsAmount: __},
+      subtotal: { amount: _, minorUnitsAmount: __ },
     } = lineItems[0];
 
     actions.confirm().then((result) => {
       if (result.type === 'success') {
-        const {session} = result;
+        const { session } = result;
       } else {
-        const {error} = result;
+        const { error } = result;
       }
     });
   } else {
-    const {error} = loadActionsResult;
+    const { error } = loadActionsResult;
   }
 });
 
