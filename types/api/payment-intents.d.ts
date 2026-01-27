@@ -1,5 +1,5 @@
-import {Address, AddressParam} from './shared';
-import {PaymentMethod} from './payment-methods';
+import { Address, AddressParam } from './shared';
+import { PaymentMethod } from './payment-methods';
 
 /**
  * The PaymentIntent object.
@@ -154,6 +154,11 @@ export namespace PaymentIntent {
     message?: string;
 
     /**
+     * For some errors, a more specific validation message.
+     */
+    validation_message?: string;
+
+    /**
      * If the error is parameter-specific, the parameter related to the error. For example, you can use this to display a message near the correct form field.
      */
     param?: string;
@@ -227,7 +232,7 @@ export namespace PaymentIntent {
        */
       image_data_url: string;
     }
-    export interface UseStripeSdk {}
+    export interface UseStripeSdk { }
     export interface VerifyWithMicrodeposits {
       /**
        * The timestamp when the microdeposits are expected to land.
@@ -286,7 +291,7 @@ export interface PaymentIntentConfirmParams {
   /**
    * This hash contains details about the Mandate to create
    */
-  mandate_data?: {[k: string]: any};
+  mandate_data?: { [k: string]: any };
 
   /**
    * Email address that the receipt for the resulting payment will be sent to.

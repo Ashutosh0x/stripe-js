@@ -1,4 +1,4 @@
-import {PaymentMethod} from './payment-methods';
+import { PaymentMethod } from './payment-methods';
 
 /**
  * The SetupIntent object.
@@ -107,6 +107,11 @@ export namespace SetupIntent {
     message?: string;
 
     /**
+     * For some errors, a more specific validation message.
+     */
+    validation_message?: string;
+
+    /**
      * If the error is parameter-specific, the parameter related to the error. For example, you can use this to display a message near the correct form field.
      */
     param?: string;
@@ -165,7 +170,7 @@ export namespace SetupIntent {
       url: string | null;
     }
 
-    export interface UseStripeSdk {}
+    export interface UseStripeSdk { }
 
     export interface VerifyWithMicrodeposits {
       /**
@@ -198,7 +203,7 @@ export interface SetupIntentConfirmParams {
   /**
    * This hash contains details about the Mandate to create
    */
-  mandate_data?: {[k: string]: any};
+  mandate_data?: { [k: string]: any };
 
   /**
    * The URL to redirect your customer back to after they authenticate on the payment method's app or site.
